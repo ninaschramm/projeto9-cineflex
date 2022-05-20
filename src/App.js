@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import './reset.css';
 import './styles.css';
 
 import MovieList from "./MovieList";
@@ -17,7 +18,7 @@ function App() {
 				{/* Cada rota tem que estar em Route */}
 				<Route path="/" element={<MovieList />} />
 				<Route path="/movies/:idmovie" element={<MovieSessions />}/>
-        <Route path="/session/:idmovie" element={<SessionCheckout />}/>
+        <Route path="/seats/:idsession" element={<SessionCheckout />}/>
         <Route path="/confirm" element={<SessionConfirm  />}/>
 			</Routes>
 		</BrowserRouter>

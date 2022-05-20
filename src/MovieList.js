@@ -21,7 +21,7 @@ export default function MovieList() {
             <main>
                 <Title>Selecione o filme</Title>
                 <Container>
-                    {movies.map(movie => <Link to="/sessoes/:idFilme"><img src={movie.posterURL} alt={movie.title}/></Link> )}
+                    {movies.map(movie => <Link to={`/movies/${movie.id}`}><div><img src={movie.posterURL} alt={movie.title}/></div></Link> )}
                 </Container>
             </main>
         
@@ -51,6 +51,17 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    div {
+    width: 145px;
+    height: 209px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 
     img {
         width: 129px;

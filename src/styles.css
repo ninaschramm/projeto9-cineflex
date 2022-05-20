@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    max-width: 375px;
+    max-width: 390px;
     height: 67px;
     background-color: #C3CFD9;
     display: flex;
@@ -16,11 +16,10 @@ header {
 
 main {
     width: 100%;
-    max-width: 375px;
+    max-width: 390px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Roboto';
-    background-color: #E5E5E5;
 }

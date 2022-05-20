@@ -2,15 +2,19 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import styled from 'styled-components';
+import Footer from './Footer';
 
 export default function MovieSessions() {
 
     const [days, setDays] = useState([]);
+    const [movie, setMovie] = useState([]);
+    
     
    useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies/12/showtimes");    
         promise.then(response => {
             setDays(response.data.days);
+            setMovie(response.data)
             console.log(days);
     });  
     }, [] )
@@ -18,8 +22,8 @@ export default function MovieSessions() {
    function showTimes(day) {
 
     return (
-        <> <WeekDay>{day.weekday}</WeekDay> 
-        <div>{day.showtimes.map(time => <TimeSession>{time.name}</TimeSession>)}</div>
+        <> <WeekDay>{day.weekday} - {day.date}</WeekDay> 
+        <TimesShown>{day.showtimes.map(time => <Link to={`/seats/${time.id}`}><TimeSession>{time.name}</TimeSession></Link>)}</TimesShown>
     </>)
    }
    
@@ -33,6 +37,7 @@ export default function MovieSessions() {
                <Container>
                    {days.map(day => showTimes(day))}
                </Container>
+               <Footer movie={movie} />
            </main>
        
    )
@@ -56,14 +61,19 @@ const Title = styled.div`
     font-size: 24px;
     line-height: 28px;
     color: #293845;
+    background-color: #FFFFFF;
 `;
 
 const Container = styled.div`
     gap: 15px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    height: calc(100% - 287px);
+    border-bottom: 110px;
+    overflow-y: scroll;
+    max-height: 540px ;
+    background-color: #FFFFFF;
 `;
 
 const WeekDay = styled.div`
@@ -75,15 +85,30 @@ const WeekDay = styled.div`
     display: flex;
     align-items: center;
     color: #293845;
+    margin: 5px 0;
+    margin-left: 25px;
 `;
 
 const TimeSession = styled.div`
-width: 83px;
-height: 43px;
-left: 23px;
-top: 227px;
+    width: 83px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E8833A;
+    border-radius: 3px;
+    color: #FFFFFF;
 
-background: #E8833A;
-border-radius: 3px;
-color: #FFFFFF;
+    a:visited    { 
+        text-decoration: none;      
+        }
 `;
+
+const TimesShown = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-left: 25px;
+`
+
