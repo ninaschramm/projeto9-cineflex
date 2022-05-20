@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import styled from 'styled-components';
 import Footer from './Footer';
 
 export default function MovieSessions() {
 
+    const movieIDdata = useParams();
+    const movieID = movieIDdata.idmovie
+
     const [days, setDays] = useState([]);
     const [movie, setMovie] = useState([]);
     
     
    useEffect(() => {
-        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies/12/showtimes");    
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieID}/showtimes`);    
         promise.then(response => {
             setDays(response.data.days);
             setMovie(response.data)

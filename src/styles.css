@@ -23,3 +23,25 @@ main {
     justify-content: center;
     font-family: 'Roboto';
 }
+
+.seat {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #808F9D;
+    border-radius: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.liberado {
+    background-color: blue;
+}
+
+.ocupado {
+    background-color: #F7C52B;
+}
+
+.selecionado {
+    background-color: aquamarine;
+}
