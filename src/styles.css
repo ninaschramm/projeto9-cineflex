@@ -1,0 +1,46 @@
+header {
+    width: 100%;
+    max-width: 375px;
+    height: 67px;
+    background-color: #C3CFD9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 40px;
+    color: #E8833A;
+}
+
+main {
+    width: 100%;
+    max-width: 375px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto';
+    border: 1px solid black;
+    background-color: #E5E5E5;
+}
+
+main .title {
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .movieList {
+    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+main img {
+    width: 129px;
+    height: 193px;
+}
