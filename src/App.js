@@ -16,8 +16,8 @@ function App() {
 			<Routes>
 				{/* Cada rota tem que estar em Route */}
 				<Route path="/" element={<MovieList />} />
-				<Route path="/movie:idmovie" element={<MovieSessions />}/>
-        <Route path="/session:idmovie" element={<SessionCheckout />}/>
+				<Route path="/movies/:idmovie" element={<MovieSessions />}/>
+        <Route path="/session/:idmovie" element={<SessionCheckout />}/>
         <Route path="/confirm" element={<SessionConfirm  />}/>
 			</Routes>
 		</BrowserRouter>
