@@ -8,7 +8,7 @@ export default function SessionCheckout() {
 
     const [movie, setMovie] = useState([]);
     const [seats, setSeats] = useState([]);
-    const [eachSeat, setEachSeat] = useState([]);
+    let selectedSeats = [];
     const sessionIDdata = useParams();
     const sessionID = sessionIDdata.idsession
     
@@ -20,19 +20,32 @@ export default function SessionCheckout() {
             setSeats(response.data.seats)
     });  
     }, [] )
+   
 
     function showSeats(seat) {
-        let color = ""
-        seat.isAvailable ? color = "liberado" : color = "ocupado";
+        seat.isAvailable ? seat.status = "available" : seat.status = "not-available";
         return (
-            <SeatSelect className={`${color}`} onClick={(seat) => selectSeat(seat)}>{seat.name}</SeatSelect>
+            <SeatSelect color={`${seat.status}`} onClick={(seat) => selectSeat(seat)}>{seat.name}</SeatSelect>
         )
         
     }
 
     function selectSeat(seat) {
-        seat.target.className = "seat selecionado"
+        seat.target.classList.toggle("selecionado")
+        let newSeat = (seat.target.innerText)
+        if (selectedSeats.includes(newSeat)) {
+            for (let i=0; i<selectedSeats.length; i++) {
+                if (selectedSeats[i] == newSeat) {
+                    if (i==0) {selectedSeats.splice(0)}
+                    else {selectedSeats.splice(i,i)}                    
+                }
+            }        
+        }
+        else {selectedSeats.push(newSeat)}
+        
+        console.log(selectedSeats)
     }
+    
 
    
    if (movie) {
@@ -55,6 +68,17 @@ export default function SessionCheckout() {
    }
 
 }
+
+const handleColorType = color => {
+    switch (color) {
+      case "selected":
+        return "#03a9f3";
+      case "not-available":
+        return "#f56342";
+      default:
+        return "#fff";
+    }
+  };
 
 const Title = styled.div`
     height: 110px;
@@ -85,7 +109,7 @@ const Container = styled.div`
 const SeatSelect = styled.div`
     width: 26px;
     height: 26px;
-    background: {props.color};
+    background: ${({ color }) => handleColorType(color)};
     border: 1px solid #808F9D;
     border-radius: 26px;
     display: flex;
