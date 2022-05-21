@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export default function Footer ({ movie }) {
-    
+export default function Footer ({ movie, day, session }) {
+    let isDay = false;
+    if (day !== undefined) {isDay = true}
     return (
-        <FooterDiv><div><img src={`${movie.posterURL}`} alt={`${movie.title}`} /></div> {movie.title}</FooterDiv>
+        <FooterDiv><div><img src={`${movie.posterURL}`} alt={`${movie.title}`} /></div> {movie.title}<br></br>
+        { isDay ? `${day.date} ${session.name}` : ""}</FooterDiv>
         )
 }
 
@@ -16,7 +18,7 @@ const FooterDiv = styled.div`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 26px;
+    font-size: 20px;
     line-height: 30px;
     display: flex;
     align-items: center;

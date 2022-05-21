@@ -43,5 +43,6 @@ main {
 }
 
 .selecionado {
-    background-color: aquamarine !important;
+    background-color: #8DD7CF !important;
+    border-color: #1AAE9E !important;
 }

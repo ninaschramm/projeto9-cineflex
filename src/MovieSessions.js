@@ -38,7 +38,7 @@ export default function MovieSessions() {
            <main>
                <Title>Selecione o horário</Title>
                <Container>
-                   {days.map(day => showTimes(day))}
+                   {days.map(day => showTimes(day))}                   
                </Container>
                <Footer movie={movie} />
            </main>
@@ -72,11 +72,12 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100% - 287px);
+    height: calc(100vh - 290px);
     border-bottom: 110px;
     overflow-y: scroll;
     max-height: 540px ;
     background-color: #FFFFFF;
+    
 `;
 
 const WeekDay = styled.div`
