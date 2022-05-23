@@ -6,9 +6,6 @@ export default function Header( {showBack} ) {
 
         let history = useNavigate();
 
-    console.log(showBack)
-
-
     return (
         <>
             <HeaderStyle>

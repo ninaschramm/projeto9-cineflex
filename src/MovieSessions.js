@@ -18,7 +18,6 @@ export default function MovieSessions( { setShowBack }) {
         promise.then(response => {
             setDays(response.data.days);
             setMovie(response.data)
-            console.log(days);
     });  
     }, [] )
 

@@ -64,7 +64,6 @@ export default function SessionCheckout({ state, setState, setShowBack }) {
             }        
         }
         else {newSelectedSeats.push(newSeat); newSeatNumbers.push(newSeatNumber)}
-        console.log(newSelectedSeats, newSeatNumbers)
         setSelectedSeats(newSelectedSeats)
         setSeatNumbers(newSeatNumbers)
     }
@@ -102,7 +101,6 @@ export default function SessionCheckout({ state, setState, setShowBack }) {
             
                 const promise = axios.post(`https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many`, seatsToPost)
                 promise.then(response => {
-                    console.log(response.data)
                     navigate('/success')                
                 })
                 promise.catch(err => console.log(err))

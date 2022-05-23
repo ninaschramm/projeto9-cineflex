@@ -53,12 +53,11 @@ const Container = styled.div`
     width: 100%;    
     height: 100vh;
     border-bottom: 110px;
-    overflow-y: scroll;
-    max-height: 540px ;
     background-color: #FFFFFF;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
+    line-height: 26px;
     color: #293845;
 
     h1 {
@@ -95,4 +94,6 @@ const Container = styled.div`
 
 const Info = styled.div`
     width: 100%;
+    max-height: 400px;
+    overflow-y: scroll;
 `
