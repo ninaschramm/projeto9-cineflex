@@ -4,7 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Footer from './Footer';
 
-export default function MovieSessions() {
+export default function MovieSessions( { setShowBack }) {
 
     const movieIDdata = useParams();
     const movieID = movieIDdata.idmovie
@@ -36,6 +36,7 @@ export default function MovieSessions() {
        return (
        
            <main>
+               {setShowBack(true)}
                <Title>Selecione o horário</Title>
                <Container>
                    {days.map(day => showTimes(day))}                   

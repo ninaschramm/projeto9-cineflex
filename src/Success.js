@@ -1,40 +1,29 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export default function Success({ state }) {
+export default function Success({ state, setShowBack }) {
 
     
-    
-    
-    console.log(state)
-    function forTicket() {
-        for (let i of state.seatNumbers) {
-            <div>Assento {i}</div>
-        }
-    }
     
     return (
 
-        <main>
-           
-        <Container>
-            <Title>
-                Pedido feito com sucesso!
-            </Title>
-            
-<h1>Filme e Sessão:</h1> <div>{state.movie.title}</div> <div>{state.day.date} {state.session.name}</div>
- 
-           <h1>Ingressos:</h1>
+        <main>        
+            {setShowBack(true)}   
+            <Container>
+                <Title>
+                    Pedido feito <br></br>com sucesso!
+                </Title>
+                <Info><h1>Filme e Sessão:</h1> 
+                <div>{state.movie.title}</div> <div>{state.day.date} {state.session.name}</div>
+    
+            <h1>Ingressos:</h1> 
+            {state.seatNumbers.map(seat => <div>{`Assento ${seat}`}</div>)}
 
-        {state.seatNumbers.map(seat => <div>{`Assento ${seat}`}</div>)}
-
- <h1>Comprador:</h1>          
-<div>{state.name}</div> <div>{state.CPF}</div>
-
-
-            
-            <Link to="/"><button>Voltar pra Home</button></Link>
-        </Container>
+                <h1>Comprador:</h1>   
+                <div>{state.name}</div> <div>{state.CPF}</div></Info>
+                
+                <Link to="/"><button>Voltar pra Home</button></Link>
+            </Container>
         </main>
     )
 }
@@ -44,12 +33,13 @@ const Title = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 24px;
     line-height: 28px;
-    color: #293845;
+    color: #247A6B;
     background-color: #FFFFFF;
 `;
 
@@ -58,6 +48,7 @@ const Container = styled.div`
     gap: 10px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 0 25px;
     width: 100%;    
     height: 100vh;
@@ -68,12 +59,13 @@ const Container = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
+    color: #293845;
 
     h1 {
         font-weight: 700;
         font-size: 24px;
-        margin-top: 20px;
-        margin-bottom: 5px;
+        margin-top: 30px;
+        margin-bottom: 10px;
     }
 
     button {
@@ -101,3 +93,6 @@ const Container = styled.div`
             }
 `;
 
+const Info = styled.div`
+    width: 100%;
+`

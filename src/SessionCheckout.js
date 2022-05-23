@@ -4,7 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Footer from './Footer';
 
-export default function SessionCheckout({ state, setState }) {
+export default function SessionCheckout({ state, setState, setShowBack }) {
 
     const [movie, setMovie] = useState([]);
     const [seats, setSeats] = useState([]);
@@ -119,7 +119,7 @@ export default function SessionCheckout({ state, setState }) {
        return (
        
            <main>
-               
+               {setShowBack(true)}
                <Container><Title>Selecione o(s) assento(s)</Title>
                     <SeatList>{seats.map(seat => showSeats(seat))}</SeatList>
                     <Label>
@@ -266,8 +266,22 @@ const Form = styled.div`
 
         input {
             height: 50px;
+            width: 327px;
+            background: #FFFFFF;
+            border: 1px solid #D5D5D5;
             border-radius: 3px;
-        }
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 18px;
+            padding-left: 10px;
+
+            ::placeholder {
+
+            font-style: italic;
+            }
+            }
+
+        
 
         button {
             width: 225px;

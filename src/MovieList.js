@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import styled from 'styled-components';
 
-export default function MovieList() {
+export default function MovieList({ setShowBack }) {
 
     const [movies, setMovies] = useState([]);
     
@@ -17,8 +17,9 @@ export default function MovieList() {
 
     if (movies) {
         return (
-        
+           
             <main>
+                {setShowBack(false)}
                 <Title>Selecione o filme</Title>
                 <Container>
                     {movies.map(movie => <Link to={`/movies/${movie.id}`}><div><img src={movie.posterURL} alt={movie.title}/></div></Link> )}
@@ -44,6 +45,7 @@ const Title = styled.div`
     font-weight: 400;
     font-size: 24px;
     line-height: 28px;
+    color: #293845;
 `;
 
 const Container = styled.div`
