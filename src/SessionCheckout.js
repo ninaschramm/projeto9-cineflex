@@ -192,7 +192,6 @@ const Container = styled.div`
     height: calc(100vh - 180px);
     border-bottom: 110px;
     overflow-y: scroll;
-    max-height: 540px ;
     background-color: #FFFFFF;
 `;
 

@@ -94,6 +94,5 @@ const Container = styled.div`
 
 const Info = styled.div`
     width: 100%;
-    max-height: 400px;
     overflow-y: scroll;
 `
